@@ -1,0 +1,16 @@
+- Inserire dinamicamente opzioni nell'SQL (AbstrPCM, DataFormat impl., DataLogic impl.)
+- EveryPCM o derivata: far si' che il chiamante abbia i risultati divisi per partizione
+- Nella generazione dei campi, i campi di tipo testo dovrebbero avere maggiori controlli
+  (codifica, sequenze di escaping...)
+
+- Razionalizzare e migliorare le classi astratte che implementano DataLogic ?
+  - ReloaderDataLogic: rendere indipendente da <PR>
+    ==> creare un'ulteriore classe astratta con i dati delle partizioni
+  - in questa nuova classe astratta, tenere i dati in un formato indipendente da <PR>
+    (ad esempio, lista ordinata di [timestamp max; num giorno OR null])
+    e implementare un metodo unico che prenda in input il timestamp del record 
+    e che dia in output il numero del giorno
+
+- Se tutte le tabelle sommario fossero implementazioni di una stessa interfaccia/classe astratta,
+  allora nella precedente classe potrebbe essere inclusa anche la query della tabella sommario
+  (richiede cambiamenti in bit-common-db e bit-trk-db, a livello di entita' generate)

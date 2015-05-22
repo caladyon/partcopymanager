@@ -1,0 +1,20 @@
+Partition Copy Manager
+=================================================
+0.3.0 - 2015-05-15
+
+TwoPassPartCopyManager replaces EveryPartCopyManager.
+
+-------------------------------------------------
+0.2.0 - 2015-05-13
+
+EveryPartCopyManager
+CopiesHolder
+PartCopyUtil
+
+-------------------------------------------------
+0.1.0 - 2015-05-12
+
+First release (tested with tbit48)
+PartCopyManager & OncePartCopyManager
+DataFormat & implementations (with partition reloading)
+DataLogic & abstract classes
