@@ -6,6 +6,8 @@ package it.caladyon.pgsql.pcm;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -15,14 +17,12 @@ import org.apache.commons.logging.LogFactory;
  * <ol>
  * <li>instantiate;
  * <li>configure (invoking setter methods);
- * <li>invoke {@link #postConstruct()};
+ * <li>invoke {@link #postConstruct()}
+ * (only if the context doesn't do it automatically via {@link PostConstruct} annotation);
  * <li>pass to a {@link PartCopyManager} instance (via setLogic method).
  * </ol>
- * <p>
- * Instances of this class are not safe for use by multiple concurrent threads,
- * since internally it could use single thread-unsafe classes.
  *
- * @author Luciano Boschi 87001893
+ * @author Luciano Boschi
  * @param <R>		Data record.
  *
  * @since 12/mag/2015
@@ -47,9 +47,6 @@ public abstract class ReloaderDataLogic<R> implements DataLogic<R> {
 
 	/** (milliseconds). */
 	private long partitionsRetryDelay = DEFAULT_PARTITIONS_RETRY_DELAY;
-
-//	/** Partition summary. */
-//	protected List<PR> partitions = null;
 
 	/** Reloader of the partition summary. */
 	private Timer timer = null;
@@ -77,19 +74,12 @@ public abstract class ReloaderDataLogic<R> implements DataLogic<R> {
 		this.partitionsRetryDelay = partitionsRetryDelay;
 	}
 
+	@PostConstruct
 	public void postConstruct() {
+		log.debug("ReloaderDataLogic: post construct");
 		loadPartitionTable();
 		startTimer();
 	}
-
-//	/* (non-Javadoc)
-//	 * @see java.lang.Object#finalize()
-//	 */
-//	@Override
-//	protected void finalize() throws Throwable {
-//		cancelTimer();
-//		super.finalize();
-//	}
 
 	/**
 	 *
@@ -124,41 +114,38 @@ public abstract class ReloaderDataLogic<R> implements DataLogic<R> {
 
 	/**
 	 * Queries the database to update the partition summary.
-	 *
+	 * Called by {@link #postConstruct()}.
 	 * @since 12/mag/2015
 	 */
 	abstract protected void loadPartitionTable0();
 
 	/**
-	 * Avvia il timer per il rinvio degli eventi falliti.
-	 * In ambito Spring, questo metodo andrebbe chiamato in un metodo <code>@PostConstruct</code>.
+	 * Starts the timer.
+	 * Called by {@link #postConstruct()}.
 	 */
 	protected synchronized void startTimer() {
 		if (timer == null) {
 			timer = new Timer();
 			PartitionReloader tr = new PartitionReloader();
 			timer.scheduleAtFixedRate(tr, 0, partitionsDelay);
-			if (log.isDebugEnabled())
-				log.debug("startTimer - Timer started");
+			log.debug("startTimer - Timer started");
 		}
 	}
 
 	/**
-	 * Cancella il timer.
-	 * In ambito Spring, questo metodo andrebbe chiamato in un metodo <code>@PreDestroy</code>.
+	 * Calls {@link Timer#cancel()}.
 	 */
 	protected synchronized void cancelTimer() {
 		if (timer != null) {
 			timer.cancel();
 			timer = null;
-			if (log.isDebugEnabled())
-				log.debug("cancelTimer - Timer canceled");
+			log.debug("cancelTimer - Timer canceled");
 		}
 	}
 
 	/**
 	 *
-	 * @author Luciano Boschi 87001893
+	 * @author Luciano Boschi
 	 * @since 12/mag/2015
 	 *
 	 */

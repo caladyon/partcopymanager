@@ -1,5 +1,9 @@
 Partition Copy Manager
 =================================================
+0.4.0 - 2015-05-25
+
+ReloaderDataLogic: @PostConstruct/@PreDestroy
+-------------------------------------------------
 0.3.0 - 2015-05-15
 
 TwoPassPartCopyManager replaces EveryPartCopyManager.
