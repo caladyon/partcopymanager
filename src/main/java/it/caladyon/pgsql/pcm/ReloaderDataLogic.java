@@ -7,6 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -135,6 +136,7 @@ public abstract class ReloaderDataLogic<R> implements DataLogic<R> {
 	/**
 	 * Calls {@link Timer#cancel()}.
 	 */
+	@PreDestroy
 	protected synchronized void cancelTimer() {
 		if (timer != null) {
 			timer.cancel();
@@ -144,6 +146,7 @@ public abstract class ReloaderDataLogic<R> implements DataLogic<R> {
 	}
 
 	/**
+	 * Esegue {@link ReloaderDataLogic#loadPartitionTable()}.
 	 *
 	 * @author Luciano Boschi
 	 * @since 12/mag/2015
