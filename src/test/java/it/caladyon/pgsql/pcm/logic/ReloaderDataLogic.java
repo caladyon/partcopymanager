@@ -1,7 +1,7 @@
 /**
  *
  */
-package it.caladyon.pgsql.pcm;
+package it.caladyon.pgsql.pcm.logic;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -11,6 +11,9 @@ import javax.annotation.PreDestroy;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import it.caladyon.pgsql.pcm.DataLogic;
+import it.caladyon.pgsql.pcm.PartCopyManager;
 
 /**
  * <p>
@@ -27,8 +30,9 @@ import org.apache.commons.logging.LogFactory;
  * @param <R>		Data record.
  *
  * @since 12/mag/2015
- *
+ * @deprecated
  */
+@Deprecated
 public abstract class ReloaderDataLogic<R> implements DataLogic<R> {
 
 	/** Default for {@link #partitionsDelay} (milliseconds). */

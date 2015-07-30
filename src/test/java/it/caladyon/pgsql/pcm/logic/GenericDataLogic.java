@@ -1,7 +1,7 @@
 /**
  *
  */
-package it.caladyon.pgsql.pcm;
+package it.caladyon.pgsql.pcm.logic;
 
 import java.util.List;
 
@@ -17,32 +17,10 @@ import java.util.List;
  * @author Luciano Boschi
  * @param <R>
  * @since 14/mag/2015
- *
+ * @deprecated
  */
+@Deprecated
 public abstract class GenericDataLogic<R> extends ReloaderDataLogic<R> {
-
-	/**
-	 * DTO.
-	 * @author Luciano Boschi
-	 * @since 14/mag/2015
-	 *
-	 */
-	protected static class PartData {
-
-		protected final long mints;
-
-		protected final long maxts;
-
-		protected final int daynum;
-
-		public PartData(long mints, long maxts, int daynum) {
-			super();
-			this.mints = mints;
-			this.maxts = maxts;
-			this.daynum = daynum;
-		}
-
-	}
 
 	protected List<PartData> partitions;
 

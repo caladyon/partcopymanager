@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.caladyon</groupId>
 	<artifactId>partcopymanager</artifactId>
-	<version>0.4.0</version>
+	<version>0.5.0-SNAPSHOT</version>
 	<parent>
 		<groupId>it.infoblu</groupId>
 		<artifactId>ib-parent</artifactId>

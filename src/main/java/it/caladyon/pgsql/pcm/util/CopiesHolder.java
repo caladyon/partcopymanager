@@ -1,7 +1,5 @@
 package it.caladyon.pgsql.pcm.util;
 
-import it.caladyon.pgsql.pcm.EveryPartCopyManager;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PipedInputStream;
@@ -17,7 +15,6 @@ import org.apache.commons.logging.Log;
 /**
  * This class manages streams and threads bounded to the used partitions.
  *
- * @see EveryPartCopyManager
  * @author Luciano Boschi
  * @since 13/mag/2015
  *

@@ -8,7 +8,11 @@ import java.nio.charset.CharacterCodingException;
 import java.util.List;
 
 /**
- *
+ * <p>
+ * Strategy for data formatting.
+ * <p>
+ * Implementation are found in <code>it.caladyon.pgsql.pcm.format</code> package.
+ * <p>
  * TODO: metodo per modificare le opzioni dell'SQL di copia.
  *
  * @author Luciano Boschi

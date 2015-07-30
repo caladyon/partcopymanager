@@ -1,7 +1,7 @@
 /**
  *
  */
-package it.caladyon.pgsql.pcm;
+package it.caladyon.pgsql.pcm.format;
 
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
@@ -9,6 +9,8 @@ import java.nio.charset.CharacterCodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetEncoder;
 import java.util.List;
+
+import it.caladyon.pgsql.pcm.DataFormat;
 
 /**
  * Instances of this class are not safe for use by multiple concurrent threads,

@@ -8,7 +8,10 @@ import java.util.List;
 import org.postgresql.copy.CopyManager;
 
 /**
+ * <p>
  * Logic of data type management.
+ * <p>
+ * Implementation are found in <code>it.caladyon.pgsql.pcm.logic</code> package.
  *
  * @param <R>	Class modeling a record.
  *
