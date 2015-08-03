@@ -22,13 +22,19 @@ public abstract class AbstractSummaryQuerier implements SummaryQuerier {
 	 * @see it.caladyon.pgsql.pcm.logic.SummaryQuerier#getPartitions()
 	 */
 	@Override
-	public List<PartData> getPartitions() {
+	public final List<PartData> getPartitions() {
 		log.debug("Reloading partition summary...");
 		List<PartData> rv = readPartitions();
 		log.info(debugPartitions(rv));
 		return rv;
 	}
 
+	/**
+	 * This method may throw exception (IO, SQL, ...).
+	 *
+	 * @return		The same conventions of {@link #getPartitions()} apply.
+	 *
+	 */
 	protected abstract List<PartData> readPartitions();
 
 	protected String debugPartitions(List<PartData> partitions) {

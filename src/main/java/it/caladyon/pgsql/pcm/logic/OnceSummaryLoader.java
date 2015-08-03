@@ -6,6 +6,8 @@ package it.caladyon.pgsql.pcm.logic;
 import java.util.List;
 
 /**
+ * Queries the partition summary just once (at {@link #setSummaryQuerier(SummaryQuerier)} call).
+ *
  * @author Luciano Boschi
  * @since 30 lug 2015
  *

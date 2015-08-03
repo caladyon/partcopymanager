@@ -6,6 +6,9 @@ package it.caladyon.pgsql.pcm.logic;
 import java.util.List;
 
 /**
+ * The definition for the logic with which retrieve the partition summary,
+ * using a {@link SummaryQuerier}, that holds the query implementation.
+ *
  * @author Luciano Boschi
  * @since 29 lug 2015
  *

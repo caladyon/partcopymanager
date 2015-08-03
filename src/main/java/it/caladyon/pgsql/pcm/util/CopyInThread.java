@@ -2,6 +2,7 @@ package it.caladyon.pgsql.pcm.util;
 
 import it.caladyon.pgsql.pcm.AbstrPartCopyManager;
 import it.caladyon.pgsql.pcm.OncePartCopyManager;
+import it.caladyon.pgsql.pcm.exceptions.PartCopyManagerException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,9 +43,9 @@ public class CopyInThread extends Thread {
 	 */
 	public CopyInThread(Connection conn, String partname, InputStream is) throws SQLException {
 		if (partname == null) {
-			throw new NullPointerException("'partname' cannot be null!");
+			throw new PartCopyManagerException("'partname' cannot be null!");
 		} else if (is == null) {
-			throw new NullPointerException("'is' cannot be null!");
+			throw new PartCopyManagerException("'is' cannot be null!");
 		} else {
 			cm = OncePartCopyManager.getCopyManager(conn);
 			sql = AbstrPartCopyManager.composeCopySql(partname);

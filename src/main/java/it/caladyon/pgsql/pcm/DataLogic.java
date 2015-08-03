@@ -26,7 +26,7 @@ public interface DataLogic<R> {
 	 * The returned name should be fully qualified (i.e. schema.table).
 	 *
 	 * @param record
-	 * @return
+	 * @return			The partition name, or null in case of error.
 	 *
 	 * @since 30/apr/2015
 	 */
