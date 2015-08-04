@@ -50,11 +50,14 @@ public class SmartDeterminationAlgorithm extends SimpleDeterminationAlgorithm {
 				return -1;
 			}
 		} else {
-			int rv = super.determineDayNum(timestamp, partitions);
-			if (rv >= 0) {
-				lastIndex = rv;
+			for (int i = 0; i < partitions.size(); ++i) {
+				PartData p = partitions.get(i);
+				if (check(timestamp, p)) {
+					lastIndex = i;
+					return p.daynum;
+				}
 			}
-			return rv;
+			return -1;
 		}
 	}
 
