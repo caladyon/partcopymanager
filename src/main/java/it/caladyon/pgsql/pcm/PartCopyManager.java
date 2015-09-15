@@ -13,7 +13,7 @@ import java.util.Collection;
  *
  *
  * @author Luciano Boschi 87001893
- * @param <R>
+ * @param <R>		Record type.
  * @since 30/apr/2015
  *
  */
@@ -32,12 +32,14 @@ public interface PartCopyManager<R> {
 	/**
 	 * @param format the format to set
 	 */
-	public abstract void setFormat(DataFormat format);
+	public void setFormat(DataFormat format);
 
 	/**
 	 * @return the format
 	 */
-	public abstract DataFormat getFormat();
+	public DataFormat getFormat();
+
+	public PartCopyMapper<R> getMapper(Connection conn);
 
 	/**
 	 * Esegue "copy" dei records forniti usando la connessione data.

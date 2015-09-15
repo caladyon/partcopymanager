@@ -65,4 +65,11 @@ public class EveryPartCopyManager<R> extends AbstrPartCopyManager<R> {
 		return rv;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.caladyon.pgsql.pcm.PartCopyManager#getMapper(java.sql.Connection)
+	 */
+	@Override
+	public PartCopyMapper<R> getMapper(Connection conn) {
+		throw new UnsupportedOperationException("Method not implemented!!");
+	}
 }

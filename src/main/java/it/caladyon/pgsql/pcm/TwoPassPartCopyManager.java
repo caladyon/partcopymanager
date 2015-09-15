@@ -20,7 +20,7 @@ import java.util.Map.Entry;
  * <ol>
  * <li>the given records are sorted in different lists, one for every partition;
  * <li>for every list,
- * {@link OncePartCopyManager#copyInSinglePartition(Connection, Collection, String) copyInSinglePartition}
+ * {@link BasePartCopyManager#copyInSinglePartition(Connection, Collection, String) copyInSinglePartition}
  * is invoked.
  * </ol>
  *
@@ -29,7 +29,7 @@ import java.util.Map.Entry;
  * @since 15/mag/2015
  *
  */
-public class TwoPassPartCopyManager<R> extends OncePartCopyManager<R> {
+public class TwoPassPartCopyManager<R> extends BasePartCopyManager<R> {
 
 	@Override
 	public long copyIn(Connection conn, Collection<R> records) throws SQLException, IOException {
@@ -61,5 +61,13 @@ public class TwoPassPartCopyManager<R> extends OncePartCopyManager<R> {
 		return rv;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.caladyon.pgsql.pcm.PartCopyManager#getMapper(java.sql.Connection)
+	 */
+	@Override
+	public PartCopyMapper<R> getMapper(Connection conn) {
+		// TODO
+		throw new UnsupportedOperationException("Method not implemented!!");
+	}
 
 }
